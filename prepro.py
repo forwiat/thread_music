@@ -46,5 +46,10 @@ def preprocess():
         splits = (0, dataset)
         thread_process(splits)
 
+def check_paths():
+    if os.path.exists(hp.TF_DIR) is False:
+        os.makedirs(hp.TF_DIR)
+
 if __name__ == '__main__':
+    check_paths()
     preprocess()

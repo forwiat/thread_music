@@ -10,8 +10,8 @@ def get_next_batch():
     features = tf.parse_single_example(
             serialized_example,
             features={
-            'x': tf.FixedLenFeature([], tf.float32),
-            'y': tf.FixedLenFeature([], tf.float32)
+            'x': tf.FixedLenFeature([hp.SEGMENT * hp.FEATURE_SIZE], tf.float32),
+            'y': tf.FixedLenFeature([hp.LABEL_SIZE], tf.float32)
         }
     )
     x = tf.reshape(features['x'], [hp.SEGMENT, hp.FEATURE_SIZE])
